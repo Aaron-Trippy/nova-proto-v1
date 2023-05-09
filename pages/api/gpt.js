@@ -8,7 +8,7 @@ export default function askGpt() {
   const [chat, setChat] = useState([]);
 
   const config = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
     headers: {
       "User-Agent": "Brrilliant/0.8 Beta (OpenAI API Client)",
     },
