@@ -72,10 +72,10 @@ export default function STT() {
               if (isRecording == true) {
                 recognition.stop();
               } else {
-                setLoading(!loading);
+                setLoading(true);
                 const response = await askAi(transcript);
                 setTranscript(response);
-                setLoading(!loading);
+                setLoading(false);
               }
             }}
           >
