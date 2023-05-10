@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styles from "./STT.module.css";
 import gpt from "@/pages/api/gpt";
 import Loader from "../Loader";
@@ -8,7 +8,7 @@ export default function STT() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [loading, setLoading] = useState(false);
-  const inputRef = useRef(null);
+  const [chatHistory, setChatHistory] = useState([]);
 
   const { askAi } = gpt();
 
@@ -60,8 +60,17 @@ export default function STT() {
     }
   };
 
-  const handleInputChange = (event) => {
-    setTranscript(event.target.value);
+  const handleAskAi = async () => {
+    if (isRecording) {
+      recognition.stop();
+    } else {
+      setLoading(true);
+      const response = await askAi(transcript);
+      setChatHistory([...chatHistory, { type: "user", message: transcript }]);
+      setChatHistory([...chatHistory, { type: "ai", message: response }]);
+      setTranscript("");
+      setLoading(false);
+    }
   };
 
   return (
@@ -70,30 +79,27 @@ export default function STT() {
         <button onClick={toggleRecording}>
           {isRecording ? "Stop Recording" : "Start Recording"}
         </button>
-        <input
-          type="text"
-          ref={inputRef}
-          onChange={handleInputChange}
-          value={transcript}
-        />
-        <div className={styles.askai}>
-          <button
-            onClick={async () => {
-              if (isRecording == true) {
-                recognition.stop();
-              } else {
-                setLoading(true);
-                const response = await askAi(transcript);
-                setTranscript(response);
-                setLoading(false);
-              }
-            }}
-          >
-            Ask AI
-          </button>
+        <div className={styles.chatbox}>
+          {chatHistory.map((item, index) => (
+            <div
+              key={index}
+              className={styles.chatMessage + " " + styles[item.type]}
+            >
+              {item.message}
+            </div>
+          ))}
+        </div>
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            value={transcript}
+            onChange={(event) => setTranscript(event.target.value)}
+            placeholder="Type your message here"
+          />
+          <button onClick={handleAskAi}>Ask AI</button>
         </div>
         <div>
-          <button onClick={() => setTranscript("")}>Clear Transcript</button>
+          <button onClick={() => setChatHistory([])}>Clear Chat History</button>
         </div>
         <div>{loading && <Loader />}</div>
       </main>
