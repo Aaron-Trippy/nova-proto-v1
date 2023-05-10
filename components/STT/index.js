@@ -92,21 +92,21 @@ export default function STT() {
           ))}
         </div>
         <div className={styles.inputContainer}>
-          <button onClick={toggleRecording} className={styles.recording}>
-            {isRecording ? "Stop" : "Rec"}
-          </button>
-          <input
-            type="text"
-            value={transcript}
-            onChange={(event) => setTranscript(event.target.value)}
-            placeholder="Message Nova"
-            className={styles.inputBox}
-          />
-          <button onClick={handleAskAi} className={styles.send}>
-            Send
-          </button>
-        </div>
-        <div>
+          <div className={styles.messageContainer}>
+            <button onClick={toggleRecording} className={styles.recording}>
+              {isRecording ? "Stop" : "Rec"}
+            </button>
+            <input
+              type="text"
+              value={transcript}
+              onChange={(event) => setTranscript(event.target.value)}
+              placeholder="Message Nova"
+              className={styles.inputBox}
+            />
+            <button onClick={handleAskAi} className={styles.send}>
+              Send
+            </button>
+          </div>
           <button
             onClick={() => setChatHistory([])}
             className={styles.clearHistory}
@@ -114,6 +114,7 @@ export default function STT() {
             Clear Chat History
           </button>
         </div>
+        <div></div>
         <div className={styles.loader}>{loading && <Loader />}</div>
       </main>
     </>
