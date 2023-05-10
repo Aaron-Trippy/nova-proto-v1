@@ -93,7 +93,7 @@ export default function STT() {
         </div>
         <div className={styles.inputContainer}>
           <button onClick={toggleRecording} className={styles.recording}>
-            {isRecording ? "Stop Recording" : "Start Recording"}
+            {isRecording ? "Stop" : "Rec"}
           </button>
           <input
             type="text"
@@ -114,7 +114,7 @@ export default function STT() {
             Clear Chat History
           </button>
         </div>
-        <div>{loading && <Loader />}</div>
+        <div className={styles.loader}>{loading && <Loader />}</div>
       </main>
     </>
   );

@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-  --translucent: rgba(20, 20, 20, 0.5);
-  --background: rgb(30, 30, 30);
-  --darkgray: #1C1C1C;
-  --gray: #2A2A2A;
-  --lightgray: #363636;
+  --background: rgb(20, 20, 20);
+  --darkgray: rgb(25, 25, 25);
+  --gray: #1d1d1d;
+  --lightgray: #2b2b2b;
+  --lightergray: rgb(56, 56, 56);
   --offwhite: #d0d0d0;
   --white: #ffffff;
   --cubic: 500ms cubic-bezier(.07,.71,.69,1);
+  --grad1: #ffcb63;
+  --grad2: #ffa63b;
+  --grad3: #ff85e4;
+  --grad4: #a739f5;
   background-color: var(--background);
   color: var(--offwhite);
 }
