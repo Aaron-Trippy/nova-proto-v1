@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./STT.module.css";
 import gpt from "@/pages/api/gpt";
 import Loader from "../Loader";
+import { useRef } from "react";
 
 export default function STT() {
   const [recognition, setRecognition] = useState(null);
@@ -60,6 +61,13 @@ export default function STT() {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleAskAi();
+    }
+  };
+
   const handleAskAi = async () => {
     const userMessage = { type: "user", message: transcript };
 
@@ -89,6 +97,16 @@ export default function STT() {
     }
   };
 
+  const endref = useRef(null);
+
+  const scrollToBottom = () => {
+    endref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatHistory]);
+
   return (
     <>
       <main className={styles.main}>
@@ -102,6 +120,7 @@ export default function STT() {
             </div>
           ))}
         </div>
+        <div ref={endref}></div>
         <div className={styles.inputContainer}>
           <div className={styles.messageContainer}>
             <button onClick={toggleRecording} className={styles.recording}>
@@ -111,6 +130,7 @@ export default function STT() {
               type="text"
               value={transcript}
               onChange={(event) => setTranscript(event.target.value)}
+              onKeyDown={handleKeyPress}
               placeholder="Message Nova"
               className={styles.inputBox}
             />
