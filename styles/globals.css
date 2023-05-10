@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --translucent: rgba(20, 20, 20, 0.5);
+  --background: rgb(30, 30, 30);
+  --darkgray: #1C1C1C;
+  --gray: #2A2A2A;
+  --lightgray: #888888;
+  --offwhite: #d0d0d0;
+  --white: #ffffff;
+  --cubic: 500ms cubic-bezier(.07,.71,.69,1);
+  background-color: var(--background);
+  color: var(--offwhite);
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}

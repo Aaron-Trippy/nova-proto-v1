@@ -76,9 +76,6 @@ export default function STT() {
   return (
     <>
       <main className={styles.main}>
-        <button onClick={toggleRecording}>
-          {isRecording ? "Stop Recording" : "Start Recording"}
-        </button>
         <div className={styles.chatbox}>
           {chatHistory.map((item, index) => (
             <div
@@ -90,16 +87,27 @@ export default function STT() {
           ))}
         </div>
         <div className={styles.inputContainer}>
+          <button onClick={toggleRecording} className={styles.recording}>
+            {isRecording ? "Stop Recording" : "Start Recording"}
+          </button>
           <input
             type="text"
             value={transcript}
             onChange={(event) => setTranscript(event.target.value)}
             placeholder="Type your message here"
+            className={styles.inputBox}
           />
-          <button onClick={handleAskAi}>Ask AI</button>
+          <button onClick={handleAskAi} className={styles.send}>
+            Send
+          </button>
         </div>
         <div>
-          <button onClick={() => setChatHistory([])}>Clear Chat History</button>
+          <button
+            onClick={() => setChatHistory([])}
+            className={styles.clearHistory}
+          >
+            Clear Chat History
+          </button>
         </div>
         <div>{loading && <Loader />}</div>
       </main>
