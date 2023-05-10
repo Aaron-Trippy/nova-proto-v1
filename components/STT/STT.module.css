@@ -122,11 +122,11 @@
     padding: 0;
     margin: 0;
     /* margin-top: 1em; */
-    color: var(--offwhite);
-    font-size: 1em;
+    color: var(--lightestgray);
+    font-size: 0.9em;
     background-color: transparent;
     border: none;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .loader {
