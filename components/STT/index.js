@@ -61,13 +61,18 @@ export default function STT() {
   };
 
   const handleAskAi = async () => {
+    const userMessage = { type: "user", message: transcript };
+
     if (isRecording) {
       recognition.stop();
     } else {
       setLoading(true);
-      const response = await askAi(transcript);
-      setChatHistory([...chatHistory, { type: "user", message: transcript }]);
-      setChatHistory([...chatHistory, { type: "ai", message: response }]);
+      const response = await askAi(
+        [...chatHistory, userMessage].map((item) => item.message).join("\n")
+      );
+      const aiMessage = { type: "ai", message: response };
+
+      setChatHistory((prevChat) => [...prevChat, userMessage, aiMessage]);
       setTranscript("");
       setLoading(false);
     }
