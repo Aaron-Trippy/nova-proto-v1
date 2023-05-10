@@ -21,6 +21,11 @@ export default function askGpt() {
       model: "gpt-3.5-turbo",
       messages: [
         {
+          role: "system",
+          content:
+            "My name is Nova. I am your AI virtual assistant and I am here to help you. You can ask me anything and I will always respond in a polite and helpful manner while providing the best, most accurate answer.",
+        },
+        {
           role: "user",
           content: prompt,
         },

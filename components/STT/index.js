@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./STT.module.css";
 import gpt from "@/pages/api/gpt";
 import Loader from "../Loader";
@@ -8,6 +8,7 @@ export default function STT() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [loading, setLoading] = useState(false);
+  const inputRef = useRef(null);
 
   const { askAi } = gpt();
 
@@ -59,13 +60,22 @@ export default function STT() {
     }
   };
 
+  const handleInputChange = (event) => {
+    setTranscript(event.target.value);
+  };
+
   return (
     <>
       <main className={styles.main}>
         <button onClick={toggleRecording}>
           {isRecording ? "Stop Recording" : "Start Recording"}
         </button>
-        <div>{transcript}</div>
+        <input
+          type="text"
+          ref={inputRef}
+          onChange={handleInputChange}
+          value={transcript}
+        />
         <div className={styles.askai}>
           <button
             onClick={async () => {
