@@ -70,11 +70,22 @@ export default function STT() {
       const response = await askAi(
         [...chatHistory, userMessage].map((item) => item.message).join("\n")
       );
-      const aiMessage = { type: "ai", message: response };
+      const aiMessage = { type: "ai", message: "" };
 
       setChatHistory((prevChat) => [...prevChat, userMessage, aiMessage]);
       setTranscript("");
       setLoading(false);
+
+      let responseIndex = 0;
+      const typingEffectInterval = setInterval(() => {
+        if (responseIndex < response.length) {
+          aiMessage.message += response[responseIndex];
+          setChatHistory((prevChat) => [...prevChat]);
+          responseIndex++;
+        } else {
+          clearInterval(typingEffectInterval);
+        }
+      }, 27.5);
     }
   };
 
