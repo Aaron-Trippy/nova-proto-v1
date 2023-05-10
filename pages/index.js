@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import STT from "@/components/STT";
+import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navigation />
       <main className={styles.main}>
         <STT />
       </main>

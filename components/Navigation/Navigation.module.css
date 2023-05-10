@@ -1,0 +1,137 @@
+.main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 30px;
+    background-color: var(--gray);
+    border-bottom: 2px solid var(--lightgray);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    z-index: 999;
+    overflow: hidden;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+} 
+
+.logoContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  gap: 10px;
+  font-size: 1.5em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-left: 30px;
+}
+
+.title {
+    font-size: 1em;
+    color: var(--white);
+    transform: rotate(90deg);
+    margin-top: 40vh;
+    user-select: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+  .menuContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    transform: rotate(0deg);
+    transition: 250ms ease-out;
+    margin-right: 50px;
+  }
+  
+  .lineOne {
+    width: 30px;
+    height: 3px;
+    background-color: var(--white);
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: 300ms ease-in-out;
+    margin-bottom: 10px;
+  }
+  
+  .lineTwo {
+    width: 30px;
+    height: 3px;
+    background-color: var(--white);
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: 400ms ease-in-out;
+    margin-top: 10px;
+  }
+
+  .lineOneHover {
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+
+  .lineTwoHover {
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+
+  .lineOneOpen {
+    transform: translate(-50%, -50%) rotate(-135deg);
+    margin-bottom: 0;
+  }
+
+  .lineTwoOpen {
+    transform: translate(-50%, -50%) rotate(-225deg);
+    margin-top: 0;
+  }
+  
+
+  .sidebar {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 300px;
+    height: 100%;
+    padding: 1rem;
+    background-color: var(--darkgray);
+    border-left: 2px solid var(--lightgray);
+    z-index: 998;
+    user-select: none;
+  }
+
+  .sidebar > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem;
+  }
+
+  .link {
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100vw;
+    }
+
+    .sidebar > div {
+      padding-left: 10px;
+    }
+  }
+  

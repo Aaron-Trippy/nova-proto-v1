@@ -11,3 +11,7 @@ npm i
 ```
 npm i openai
 ```
+
+```
+npm i framer-motion
+```
