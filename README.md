@@ -1,8 +1,8 @@
 # Nova
 
-### Smarter living starts here.
+Smarter living starts here.
 
-## Dependencies
+### Dependencies
 
 ```
 npm i
