@@ -99,7 +99,7 @@ export default function STT() {
             type="text"
             value={transcript}
             onChange={(event) => setTranscript(event.target.value)}
-            placeholder="Type your message here"
+            placeholder="Message Nova"
             className={styles.inputBox}
           />
           <button onClick={handleAskAi} className={styles.send}>
